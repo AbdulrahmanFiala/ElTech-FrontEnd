@@ -5061,8 +5061,8 @@ body.menu_open {
   background: var(--primary-color);
 }
 
-*/---------------------------------UserProfilePreview--------------------------------------*/
-  #userCardBody {
+/*---------------------------------UserProfilePreview--------------------------------------*/
+#userCardBody {
   height: 100%;
 }
 
@@ -5121,10 +5121,10 @@ body.menu_open {
   background-color: #007bff;
 }
 
-
 .search-posts {
-margin: 0;
-float: inline-end;}
+  margin: 0;
+  float: inline-end;
+}
 
 .search-posts input {
   width: 60%;
@@ -5158,7 +5158,6 @@ float: inline-end;}
   border-radius: 0;
 }
 
-
 /*------------------------------------------------------------------------------------
 / 16. Dashboard
 /-------------------------------------------------------------------------------------*/
@@ -5171,7 +5170,8 @@ float: inline-end;}
   width: 90%;
   position: relative;
   margin: 50px;
-  margin-left: 50px;}
+  margin-left: 50px;
+}
 
 #dashboard-form-wrapper h5 {
   text-align: center;
@@ -5189,7 +5189,7 @@ float: inline-end;}
 #dashboard-form textarea,
 #dashboard-form input[type="email"],
 #dashboard-form select,
-#dashboard-form input[type="file"]{
+#dashboard-form input[type="file"] {
   display: block;
   width: 100%;
   height: 50px;
@@ -5210,8 +5210,7 @@ float: inline-end;}
   transition: all 0.4s ease;
 }
 
-#dashboard-form input[type="checkbox"]
-{
+#dashboard-form input[type="checkbox"] {
   width: 100px;
   height: 20px;
   padding: 10px;
@@ -5231,8 +5230,7 @@ float: inline-end;}
   transition: all 0.4s ease;
 }
 
-#dashboard-form label
- {
+#dashboard-form label {
   display: block;
   width: 100%;
   height: 50px;
@@ -5270,7 +5268,6 @@ float: inline-end;}
   transition: all 0.4s ease;
 }
 
-
 #dashboard-form textarea {
   resize: none;
   margin-bottom: 45px;
@@ -5293,7 +5290,8 @@ float: inline-end;}
   color: #9fa4af;
   opacity: 1;
 }
-#dashboard-form input[type="submit"] , #dashboard-form button{
+#dashboard-form input[type="submit"],
+#dashboard-form button {
   background: #000;
   height: 40px;
   width: 70px;

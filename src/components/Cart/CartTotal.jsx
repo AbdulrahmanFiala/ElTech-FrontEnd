@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const CartTotal = ({total}) => {
+const CartTotal = ({ total, subtotal, products }) => {
 	return (
 		<div className="col-md-6">
 			<div className="cart-totals">
@@ -14,7 +14,7 @@ const CartTotal = ({total}) => {
 									<span className="woocommerce-Price-currencySymbol">
 										$
 									</span>
-									{total}
+									{subtotal}
 								</span>
 							</td>
 						</tr>
@@ -31,11 +31,14 @@ const CartTotal = ({total}) => {
 						</tr>
 					</tbody>
 				</table>
-				<div className="wc-proceed-to-checkout">
-					<Link to="#" className="checkout-button">
-						Proceed to checkout
-					</Link>
-				</div>
+				{
+					products.length !=0 &&
+					<div className="wc-proceed-to-checkout">
+						<Link to="/checkout" className="checkout-button">
+							Proceed to checkout
+						</Link>
+					</div>
+				}
 			</div>
 		</div>
 	);

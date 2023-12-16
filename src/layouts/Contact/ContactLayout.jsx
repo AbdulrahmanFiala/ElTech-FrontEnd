@@ -10,7 +10,7 @@ const ContactLayout = () => {
 
         <ContactMap />
 
-        <ContactForm />
+        {/* <ContactForm /> */}
       </div>
     </section>
   );

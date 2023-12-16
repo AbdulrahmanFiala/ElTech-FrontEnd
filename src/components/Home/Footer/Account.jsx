@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 import FooterLink from "./FooterLink";
 
@@ -13,8 +13,11 @@ const Account = () => {
         <ul>
           {user && (
             <>
-            <FooterLink href="/profile" linkTitle="My Account" />
-            <FooterLink href="/orders" linkTitle="Purchases" />
+              <FooterLink href="/profile" linkTitle="My Account" />
+              <FooterLink
+                href={user ? "/orders" : "/login"}
+                linkTitle="Purchases"
+              />
             </>
           )}
           {!user && (
@@ -23,9 +26,6 @@ const Account = () => {
               <FooterLink href="/register" linkTitle="Sign Up" />
             </>
           )}
-
-
-          <FooterLink href="#" linkTitle="Shipping Address" />
         </ul>
       </aside>
     </div>

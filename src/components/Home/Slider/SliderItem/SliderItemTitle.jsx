@@ -29,7 +29,8 @@ const SliderItemTitle = ({ title }) => {
           textTransform: "none",
         }}
       >
-        {title}
+        {/* {title} */}
+        {title.length > 33 ? title.substring(0, 33) + '...' : title}
       </div>
     );
   };

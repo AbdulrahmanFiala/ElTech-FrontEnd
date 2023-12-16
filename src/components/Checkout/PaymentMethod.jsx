@@ -7,6 +7,7 @@ const PaymentMethod = ({
   paymentMethodId,
   paymentMethodLabel,
   paymentMethodDescription,
+  handleSelectPayment,
 }) => {
   return (
     <li className={`wc_payment_method ${paymentMethodClass}`}>
@@ -16,8 +17,10 @@ const PaymentMethod = ({
         className="input-radio"
         id={paymentMethodId}
         type="radio"
+        onClick={handleSelectPayment}
+        defaultChecked={paymentMethodChecked}
       />
-      <label for={paymentMethodId}>{paymentMethodLabel}</label>
+      <label htmlFor={paymentMethodId}>{paymentMethodLabel}</label>
       <div className={`payment_box ${paymentMethodClass}`}>
         <p>{paymentMethodDescription}</p>
       </div>

@@ -2,9 +2,9 @@ import { toast } from 'react-toastify';
 
 export const showToast = (message, type = 'default') => {
   const options = {
-    position: "top-center",
+    position: "top-right",
     autoClose: 5000,
-    hideProgressBar: true,
+    hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,

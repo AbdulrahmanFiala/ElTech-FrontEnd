@@ -6,11 +6,20 @@ const BillingField = ({
   fieldName,
   fieldType,
   noOfCol,
+  fieldValue,
+  fieldOnChange,
 }) => {
   return (
     <p className={noOfCol}>
       <label>{fieldLabel}</label>
-      <input placeholder={fieldPlaceholder} name={fieldName} type={fieldType} />
+      <input
+        placeholder={fieldPlaceholder}
+        name={fieldName}
+        type={fieldType}
+        value={fieldValue}
+        onChange={fieldOnChange}
+        required
+      />
     </p>
   );
 };

@@ -3,19 +3,29 @@ import ItemDetails from "../../components/ProductsDetails/ProductSection/ItemDet
 import ProductTab from "../../components/ProductsDetails/ProductsTab/ProductTab";
 import RelatedProducts from "../../components/ProductsDetails/RelatedProducts/RelatedProducts";
 
-const ProductSection = ({ product, handleUpdateProductToCart, handleQuantity , quantity }) => {
-	console.log(product);
+const ProductSection = ({
+	product,
+	handleAddProductToCart,
+	handleUpdateProductToCart,
+	handleQuantity,
+	inCart,
+	quantity,
+	toggleRefresh,
+}) => {
 	return (
 		<section className="single-product-section">
 			<div className="container">
 				<ItemDetails
 					product={product}
+					handleAddProductToCart={handleAddProductToCart}
 					handleUpdateProductToCart={handleUpdateProductToCart}
-					handleQuantity = {handleQuantity}
-					quantity = {quantity}
+					handleQuantity={handleQuantity}
+					inCart={inCart}
+					quantity={quantity}
+					toggleRefresh={toggleRefresh}
 				/>
-				<ProductTab product={product} />
-				<RelatedProducts />
+				<ProductTab product={product} toggleRefresh={toggleRefresh} />
+				{/* <RelatedProducts /> */}
 			</div>
 		</section>
 	);

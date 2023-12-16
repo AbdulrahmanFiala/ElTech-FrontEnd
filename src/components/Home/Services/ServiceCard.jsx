@@ -4,7 +4,7 @@ const ServiceCard = ({ image, title, description }) => {
       <div className="single-service">
         <img src={image} alt={title} />
         <h4>{title}</h4>
-        <p>{description}</p>
+        <p>{description.length > 100 ? description.substring(0, 100) + '...' : description}</p>
       </div>
     </div>
   );

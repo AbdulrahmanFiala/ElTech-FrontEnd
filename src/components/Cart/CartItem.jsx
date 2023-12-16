@@ -20,7 +20,7 @@ const CartItem = ({ product, handleDeleteProduct, handleUpdateProduct }) => {
 							<span className="woocommerce-Price-currencySymbol">
 								$
 							</span>
-							{product.product.price}
+							{product.product.discount_price}
 						</span>
 					</span>
 				</div>

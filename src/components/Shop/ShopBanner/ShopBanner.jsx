@@ -13,9 +13,9 @@ const ShopBanner = () => {
 						<div className="bread-crumb">
 							<Link to="/">Home</Link> / shop
 						</div>
-						<div className="banner-img">
+						{/* <div className="banner-img">
 							<img src={shopBannerImage} alt="" />
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>

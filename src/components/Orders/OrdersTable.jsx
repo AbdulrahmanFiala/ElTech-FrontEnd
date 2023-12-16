@@ -1,29 +1,33 @@
 import OrdersTableRow from "./OrdersTableRow"
 
-function OrdersTable() {
+function OrdersTable({ orders }) {
     return (
         <table className="cart-table">
             <thead>
                 <tr>
                     <th className="product-name-thumbnail">
-                        Product Name
-                    </th>
-                    <th className="product-price">
-                        Unit Price
+                        Date
                     </th>
                     <th className="product-quantity">
-                        Quantity
+                        Products
                     </th>
-                    <th className="product-total">Total</th>
+                    <th className="product-total">
+                        Total
+                    </th>
                     <th className="product-remove">
                         Status
                     </th>
                 </tr>
             </thead>
-            <tbody>
-                <OrdersTableRow />
-                <OrdersTableRow />
-            </tbody>
+            {orders.map((order) => {
+                return (
+                    <tbody>
+                        <OrdersTableRow
+                            order={order}
+                        />
+                    </tbody>
+                );
+            })}
         </table>
     )
 }

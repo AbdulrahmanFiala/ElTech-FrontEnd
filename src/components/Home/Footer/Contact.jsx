@@ -5,8 +5,11 @@ const Contact = () => {
     <div className="col-lg-2 col-md-6 col-custome-3">
       <aside className="widget contact-widget">
         <h3 className="widget-title">Contact & Address</h3>
-        <p>123 Street, Gandy Street, Syracuse New York - 13221.</p>
-        <p>Phone: +1 315-234-3812 Email: info@goru.com</p>
+        <p>
+          60 El-Gomhourya St. Mit Khamis WA Kafr Al Mougi, Mansoura, Dakahlia
+          Governorate.
+        </p>
+        <p>Phone: +20 106-345-0478 Email: 0eltech0@gmail.com</p>
       </aside>
     </div>
   );

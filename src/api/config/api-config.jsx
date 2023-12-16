@@ -9,6 +9,8 @@ export const PRODUCT_ENDPOINT = process.env.REACT_APP_PRODUCT_ENDPOINT;
 export const ACCOUNTS_ENDPOINT = process.env.REACT_APP_ACCOUNTS_ENDPOINT;
 export const NEWS_ENDPOINT = process.env.REACT_APP_NEWS_ENDPOINT;
 export const FAVORITE_ENDPOINT = process.env.REACT_APP_FAVORITE_ENDPOINT;
+export const SERVICE_ENDPOINT = process.env.REACT_APP_SERVICE_ENDPOINT;
+export const PAYMENT_ENDPOINT = process.env.REACT_APP_PAYMENT_ENDPOINT;
 
 // Creating a basic axios instance for API calls
 export const apiInstance = axios.create({
@@ -17,8 +19,8 @@ export const apiInstance = axios.create({
 });
 
 apiInstance.interceptors.request.use((config) => {
-	const token = localStorage.getItem('token');
-	config.headers.Authorization = token ? `Token ${token}` : '';
+	const token = localStorage.getItem("token");
+	config.headers.Authorization = token ? `Token ${token}` : "";
 	return config;
 });
 
@@ -27,8 +29,8 @@ apiInstance.interceptors.request.use(
 	(config) => {
 		config.headers.accept = "application/json";
 
-		const token = localStorage.getItem('token');
-		config.headers.Authorization = token?`Token ${token}` : "";
+		const token = localStorage.getItem("token");
+		config.headers.Authorization = token ? `Token ${token}` : "";
 
 		return config;
 	},
@@ -43,7 +45,6 @@ apiInstance.interceptors.response.use(
 	// Rejecting the promise in cases of HTTP error codes
 	(error) => Promise.reject(error)
 );
-
 
 /**
  * Makes a GET request to the specified URL and returns the received data or message in function of the status.
@@ -63,7 +64,7 @@ export async function fetchData(url) {
 	} catch (error) {
 		console.error("An error occurred:", error);
 		// Throwing the error so it can be handled by the calling function
-		throw error;
+		// throw error;
 	}
 }
 
@@ -86,7 +87,7 @@ export async function createData(url, data) {
 	} catch (error) {
 		console.error("An error occurred:", error);
 		// Throwing the error so it can be handled by the calling function
-		throw error;
+		// throw error;
 	}
 }
 
@@ -109,7 +110,7 @@ export async function updateData(url, data) {
 	} catch (error) {
 		console.error("An error occurred:", error);
 		// Throwing the error so it can be handled by the calling function
-		throw error;
+		// throw error;
 	}
 }
 
@@ -131,10 +132,9 @@ export async function deleteData(url) {
 	} catch (error) {
 		console.error("An error occurred:", error);
 		// Throwing the error so it can be handled by the calling function
-		throw error;
+		// throw error;
 	}
 }
-
 
 {
 	/* TODO Check if this is needed */

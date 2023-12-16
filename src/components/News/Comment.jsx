@@ -1,9 +1,11 @@
-import authorImage from "../../assets/images/blog/c1.jpg";
+// import authorImage from "../../assets/images/blog/c1.jpg";
 import CommentForm from "./CommentForm"; // Import your CommentForm component
 import React, { useState } from "react";
 
+import profilePic from '../../assets/images/user/profile_pic_placeholder.png';
 
-const Comment = ({ commentDate,author,content,parent, post_id ,onCommentSubmit}) => {
+
+const Comment = ({ commentDate,author,content,parent, post_id ,onCommentSubmit,setComments,setCommentsCount}) => {
 
 	const parsedDate = new Date(commentDate);
 	const formattedDate = `${parsedDate.getFullYear()}-${(parsedDate.getMonth() + 1)
@@ -17,7 +19,7 @@ const Comment = ({ commentDate,author,content,parent, post_id ,onCommentSubmit})
 
 	return (
 		<div className="single-comment">
-			<img src={authorImage} alt="" />
+			<img src={author && author.profile_picture ? `http://localhost:8000${author.profile_picture}` : profilePic} alt="admin" />
 			<h5>
 				<a style={{cursor:"pointer"}}>{author.email}</a>
 				<span>{formattedDate}</span>
@@ -31,7 +33,7 @@ const Comment = ({ commentDate,author,content,parent, post_id ,onCommentSubmit})
 
 			{showReplyForm && (
 				<div className="reply-form-wrapper">
-				<CommentForm parentCommentId={parent} post_id={post_id} onCommentSubmit={onCommentSubmit} clickHandler={handleReplyClick}/>
+				<CommentForm parentCommentId={parent} post_id={post_id} onCommentSubmit={onCommentSubmit} clickHandler={handleReplyClick} setComments={setComments} setCommentsCount={setCommentsCount}/>
 				</div>
 			)}
 		</div>

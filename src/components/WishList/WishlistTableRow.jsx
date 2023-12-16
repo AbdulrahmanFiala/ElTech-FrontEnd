@@ -3,7 +3,7 @@ import { deleteUserFavorite } from "../../api/services/user/favorite-services";
 import { getAllFavoriteProducts } from "../../api/services/user/favorite-services";
 import { Link } from "react-router-dom";
 
-function WishlistTableRow({ product, setFavoriteProductsDetails }) {
+function WishlistTableRow({ product, setFavoriteProductsDetails, handleAddProductToCart }) {
   const handleRemoveFromWishlist = async (e) => {
     e.preventDefault();
     try {
@@ -47,7 +47,7 @@ function WishlistTableRow({ product, setFavoriteProductsDetails }) {
       </td>
 
       <td className="add-to-cart">
-        <a href="#">Add To Cart</a>
+        <a href="#" onClick={() => handleAddProductToCart(product.id)}>Add To Cart</a>
       </td>
 
       <td className="product-remove">

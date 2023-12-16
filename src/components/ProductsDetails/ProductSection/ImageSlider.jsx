@@ -61,12 +61,12 @@ const ProductSlider = ({ product }) => {
 					/>
 				</li>
 				{product.images &&
-					product.images.map((image) => {
+					product.images.map((image, index) => {
 						if (image.image !== product.thumbnail.image) {
 							return (
 								<li
 									data-target="#product-slider"
-									data-slide-to="1"
+									data-slide-to={index}
 									key={image.id}
 								>
 									<img

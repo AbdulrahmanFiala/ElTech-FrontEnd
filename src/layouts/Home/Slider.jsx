@@ -9,7 +9,7 @@ import ItemCounter from "../../components/Home/Slider/ItemCounter";
 import SliderItem from "../../components/Home/Slider/SliderItem/SliderItem";
 
 const Slider = () => {
-	const [products, setProducts] = useState();
+	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
 		const fetchProducts = async () => {
@@ -72,6 +72,21 @@ const Slider = () => {
 		}
 	}, [products]);
 
+	if (!products || products.length === 0) {
+		return (
+			<section className="slider-01 d-flex align-items-center justify-content-center">
+				<ScrollButton
+					ScrollImage={Scroll}
+					content={"scroll to explore"}
+					to={"#coupone"}
+				/>
+				<h1 className="text-center">
+					Sorry, there are no featured products to show!
+				</h1>
+			</section>
+		);
+	}
+
 	return (
 		<section className="slider-01">
 			<ScrollButton
@@ -80,7 +95,6 @@ const Slider = () => {
 				to={"#coupone"}
 			/>
 			<ItemCounter />
-
 			<div className="rev_slider_wrapper">
 				<div
 					id="rev_slider_1"
@@ -101,55 +115,6 @@ const Slider = () => {
 									/>
 								);
 							})}
-
-						{/* <SliderItem
-							itemImage={
-								"http://127.0.0.1:8000/media/uploads/product/a8014845-3c80-43a0-a159-cdf1278d729b.jpg"
-							}
-							itemTitle={"Product 1"}
-							itemDescription={
-								"Lorem ipsum dolor sit amet, consectetur adipisicin do eiu smod tempor incididunt ut labore et dolo aliqua. Ut enim ad minim veniam."
-							}
-						/> */}
-
-						{/* <SliderItem
-itemImage={Layer1}
-itemTitle={"The Device That Takes You Higher."}
-itemDescription={
-"Lorem ipsum dolor sit amet, consectetur adipisicin do eiu smod tempor incididunt ut labore et dolo aliqua. Ut enim ad minim veniam."
-}
-/> */}
-						{/* <SliderItem
-itemImage={Layer1}
-itemTitle={"The Device That Takes You Higher."}
-itemDescription={
-"Lorem ipsum dolor sit amet, consectetur adipisicin do eiu smod tempor incididunt ut labore et dolo aliqua. Ut enim ad minim veniam."
-}
-/>
-
-<SliderItem
-itemImage={Layer1}
-itemTitle={"The Device That Takes You Higher."}
-itemDescription={
-"Lorem ipsum dolor sit amet, consectetur adipisicin do eiu smod tempor incididunt ut labore et dolo aliqua. Ut enim ad minim veniam."
-}
-/>
-
-<SliderItem
-itemImage={Layer1}
-itemTitle={"The Device That Takes You Higher."}
-itemDescription={
-"Lorem ipsum dolor sit amet, consectetur adipisicin do eiu smod tempor incididunt ut labore et dolo aliqua. Ut enim ad minim veniam."
-}
-/>
-
-<SliderItem
-itemImage={Layer1}
-itemTitle={"The Device That Takes You Higher."}
-itemDescription={
-"Lorem ipsum dolor sit amet, consectetur adipisicin do eiu smod tempor incididunt ut labore et dolo aliqua. Ut enim ad minim veniam."
-}
-/> */}
 					</ul>
 				</div>
 			</div>

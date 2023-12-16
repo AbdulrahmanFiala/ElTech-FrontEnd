@@ -2,7 +2,7 @@ import React from "react";
 import CountryDropDownMenu from "./CountryDropDownMenu";
 import BillingField from "./BillingField";
 
-const Billing = () => {
+const Billing = ({ billingInfo, handleBillingInfoChange }) => {
   return (
     <div className="woocommerce-billing-fields">
       <h3>Billing Info</h3>
@@ -10,7 +10,12 @@ const Billing = () => {
         <div className="col-lg-12">
           <div className="billing-countries">
             <label>Country</label>
-            <CountryDropDownMenu />
+            <CountryDropDownMenu
+              fieldValue={billingInfo.country}
+              fieldOnChange={(e) =>
+                handleBillingInfoChange("country", e.target.value)
+              }
+            />
           </div>
         </div>
         <BillingField
@@ -19,80 +24,56 @@ const Billing = () => {
           fieldPlaceholder=""
           fieldName="first_name"
           fieldType="text"
+          fieldValue={billingInfo.first_name}
+          fieldOnChange={(e) =>
+            handleBillingInfoChange("first_name", e.target.value)
+          }
         />
+
         <BillingField
           noOfCol="col-lg-6"
           fieldLabel="Last Name"
           fieldPlaceholder=""
           fieldName="last_name"
           fieldType="text"
-        />
-        <BillingField
-          noOfCol="col-lg-6"
-          fieldLabel="Company Name"
-          fieldPlaceholder=""
-          fieldName="company"
-          fieldType="text"
+          fieldValue={billingInfo.last_name}
+          fieldOnChange={(e) =>
+            handleBillingInfoChange("last_name", e.target.value)
+          }
         />
         <BillingField
           noOfCol="col-lg-6"
           fieldLabel="Address"
           fieldPlaceholder=""
-          fieldName="address_1"
+          fieldName="address"
           fieldType="text"
+          fieldValue={billingInfo.address}
+          fieldOnChange={(e) =>
+            handleBillingInfoChange("address", e.target.value)
+          }
         />
-
-        <div className="col-lg-12">
-          <div className="billing-citys">
-            <label>City / Town</label>
-            <CountryDropDownMenu />
-          </div>
-        </div>
-        <div className="col-lg-6">
-          <div className="billing-countries">
-            <label>Country / States</label>
-            <CountryDropDownMenu />
-          </div>
-        </div>
         <BillingField
           noOfCol="col-lg-6"
           fieldLabel="Postcode / Zip"
           fieldPlaceholder=""
-          fieldName="postcode"
-          fieldType="text"
+          fieldName="zip"
+          fieldType="number"
+          fieldValue={billingInfo.zip}
+          fieldOnChange={(e) =>
+            handleBillingInfoChange("zip", e.target.value * 1)
+          }
         />
-        <BillingField
-          noOfCol="col-lg-6"
-          fieldLabel="Email"
-          fieldPlaceholder=""
-          fieldName="billing_email"
-          fieldType="email"
-        />
-        <BillingField
-          noOfCol="col-lg-6"
-          fieldLabel="Phone Number"
-          fieldPlaceholder=""
-          fieldName="phone"
-          fieldType="tel"
-        />
-        <p className="col-lg-12 account">
-          <input name="account" value="1" type="checkbox" id="cac" />
-          <label for="cac">Create an account?</label>
-        </p>
-        <BillingField
-          noOfCol="col-lg-12"
-          fieldLabel="Account Password"
-          fieldPlaceholder=""
-          fieldName="password"
-          fieldType="password"
-        />
+
         <p className="col-lg-12">
           <label>Order Note</label>
-          <textarea name="order" placeholder=""></textarea>
-        </p>
-        <p className="col-lg-12 account">
-          <input name="ship-address" value="2" type="checkbox" id="ship_add" />
-          <label for="ship_add">Ship to another address</label>
+          <textarea
+            name="order_note"
+            placeholder=""
+            value={billingInfo.order_note}
+            onChange={(e) =>
+              handleBillingInfoChange("order_note", e.target.value)
+            }
+          ></textarea>
         </p>
       </div>
     </div>

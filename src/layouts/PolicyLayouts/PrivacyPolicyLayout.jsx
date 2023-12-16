@@ -1,4 +1,4 @@
-import logo from "../../assets/images/logo-lg.jpg";
+import privacy from "../../assets/images/privacy-policy.jpg";
 
 const PrivacyPolicyLayout = () => {
   return (
@@ -8,53 +8,56 @@ const PrivacyPolicyLayout = () => {
           <div className="col-lg-7">
             <h3 className="sec-title">Our Privacy Policy</h3>
             <p>
-              Sed id interdum urna. Nam ac elit a ante commodo tristique.
-              condimentum vehicula a hendrerit ac nisi. hendrerit ac nisi Lorem
-              ipsum dolor sit amet Vestibulum imperdiet nibh vel magna lacinia
-              ultrices. Sed id interdum urna.
+              At [Your Company Name], we prioritize the protection of your
+              personal information. This privacy policy outlines how we collect,
+              use, and safeguard your data.
             </p>
             <p>
-              Nullam lacinia faucibus risus, a euismod lorem tincidunt id. Donec
-              maximus placerat tempor. className aptent taciti sociosqu ad
-              litora torquent per conubia nostra, per inceptos himenaeos.
-              Suspendisse faucibus sed dolor eget posuere.Sed id interdum urna.
-              Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum
-              a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet.
+              We collect information to enhance your experience on our platform
+              and provide you with the best possible service. Your privacy is
+              important to us, and we are committed to maintaining the
+              confidentiality of the information you share with us.
             </p>
 
             <p>
-              Sed id interdum urna. Nam ac elit a ante commodo tristique.
-              condimentum vehicula a hendrerit ac nisi. hendrerit ac nisi Lorem
-              ipsum dolor sit amet Vestibulum imperdiet nibh vel magna lacinia
-              ultrices. Sed id interdum urna.
-            </p>
-            <p>
-              Nullam lacinia faucibus risus, a euismod lorem tincidunt id. Donec
-              maximus placerat tempor. className aptent taciti sociosqu ad
-              litora torquent per conubia nostra, per inceptos himenaeos.
-              Suspendisse faucibus sed dolor eget posuere.Sed id interdum urna.
-              Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum
-              a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet.
+              We may collect personal information, such as your name, email
+              address, and contact details, when you voluntarily provide them to
+              us.
             </p>
 
             <p>
-              Sed id interdum urna. Nam ac elit a ante commodo tristique.
-              condimentum vehicula a hendrerit ac nisi. hendrerit ac nisi Lorem
-              ipsum dolor sit amet Vestibulum imperdiet nibh vel magna lacinia
-              ultrices. Sed id interdum urna.
+              We use the collected information to provide and improve our
+              services, respond to inquiries, and personalize your experience.
+              Your email address may be used to send periodic updates,
+              promotions, or other relevant information. You can opt-out of
+              these communications at any time.
             </p>
+
             <p>
-              Nullam lacinia faucibus risus, a euismod lorem tincidunt id. Donec
-              maximus placerat tempor. className aptent taciti sociosqu ad
-              litora torquent per conubia nostra, per inceptos himenaeos.
-              Suspendisse faucibus sed dolor eget posuere.Sed id interdum urna.
-              Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum
-              a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet.
+              We do not sell, trade, or otherwise transfer your personal
+              information to third parties without your consent, except as
+              described in this Privacy Policy or as required by law.
+            </p>
+
+            <p>
+              We implement security measures to protect your personal
+              information. However, no method of transmission over the internet
+              or electronic storage is entirely secure, and we cannot guarantee
+              absolute security.
             </p>
           </div>
           <div className="col-lg-5">
             <div className="history-thumb">
-              <img src={logo} alt="" />
+              <img
+                src={privacy}
+                alt=""
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  width: "auto",
+                  height: "auto",
+                }}
+              />
             </div>
           </div>
         </div>

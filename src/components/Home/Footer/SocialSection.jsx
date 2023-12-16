@@ -12,15 +12,15 @@ const SoicalSection = () => {
           </a>
         </div>
         <p>
-          Sed ut perspiciatis unde omnis iste natus er sit voluptatem
-          accusantium dolore.ea commo do consequat. Duis aute irure dolor in re
-          prehenderit in.
+          Dive into a tech lover's dream with our e-commerce hub. Explore a
+          curated range of the latest gadgets and gear, seamlessly enhancing
+          your digital experience. Elevate your tech game effortlessly.
         </p>
         <div className="ab-social">
-          <SoicalSectionItem soicalHref="#" soicalIcon="twi-facebook" />
-          <SoicalSectionItem soicalHref="#" soicalIcon="twi-twitter" />
-          <SoicalSectionItem soicalHref="#" soicalIcon="twi-instagram" />
-          <SoicalSectionItem soicalHref="#" soicalIcon="twi-linkedin" />
+          <SoicalSectionItem soicalIcon="twi-facebook" />
+          <SoicalSectionItem soicalIcon="twi-twitter" />
+          <SoicalSectionItem soicalIcon="twi-instagram" />
+          <SoicalSectionItem soicalIcon="twi-linkedin" />
         </div>
       </aside>
     </div>

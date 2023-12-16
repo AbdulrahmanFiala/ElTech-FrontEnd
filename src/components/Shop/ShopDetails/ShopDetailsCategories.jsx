@@ -61,6 +61,7 @@ const ShopDetailsCategories = ({
 								All
 							</a>
 						</li>
+
 						{categories &&
 							categories.map((category) => (
 								<li key={category.id}>
@@ -75,7 +76,11 @@ const ShopDetailsCategories = ({
 										}
 										href="#"
 									>
-										{category.name}
+										{/* {category.name} */}
+										{category.name.length > 15
+											? category.name.substring(0, 15) +
+											  "..."
+											: category.name}
 									</a>
 								</li>
 							))}

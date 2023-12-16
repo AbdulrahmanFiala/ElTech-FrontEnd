@@ -15,7 +15,7 @@ const Copyright = () => {
           </div>
           <div className="col-lg-6 col-md-7">
             <div className="copys-text">
-              <i className="twi-copyright"></i>Copyright WpSmasher 2020 | All
+              <i className="twi-copyright"></i>Copyright ElTech 2023 | All
               Rights Reserved
             </div>
           </div>

@@ -1,6 +1,6 @@
 import ReactPaginate from "react-paginate";
 
-const ShopPagination = ({ pageCount, onPageChange }) => {
+const ShopPagination = ({ pageCount, onPageChange, currentPage }) => {
 	return (
 		<div className="container">
 			<div className="row">
@@ -25,6 +25,7 @@ const ShopPagination = ({ pageCount, onPageChange }) => {
 						// previousLinkClassName={"prev"}
 						// nextLinkClassName={"next"}
 						previousClassName={"prev"}
+						forcePage={currentPage}
 					/>
 					{/* <div className="goru-pagination text-center clearfix">
 						<a className="prev" href="#">

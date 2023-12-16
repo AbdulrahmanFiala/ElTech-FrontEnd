@@ -8,7 +8,7 @@ const NewsCard = ({ post }) => {
 		<div className="col-lg-4 col-md-6">
 			<div className="single-news">
 				<div className="news-thumb">
-					<img src={post.image} alt="" />
+					<img src={post.image} alt="" style={{height:"300px"}}/>
 				</div>
 				<div className="news-details">
 					<span className="post-meta">

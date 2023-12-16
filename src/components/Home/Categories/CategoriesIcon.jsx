@@ -16,25 +16,16 @@ const CategoryIcons = () => {
 		fetchCategories();
 	}, []);
 
-	// const categories = [
-	// 	"flaticon-smart-watch",
-	// 	"flaticon-drone",
-	// 	"flaticon-console",
-	// 	"flaticon-smartphone",
-	// 	"flaticon-television",
-	// 	"flaticon-headphones",
-	// 	"flaticon-photo-camera",
-	// 	"flaticon-wifi-router",
-	// 	"flaticon-pc",
-	// ];
+	if (!categories || categories.length === 0) {
+		return (
+			<div className="col-lg-12">
+				<h2 className="text-center">
+					Sorry, there are no categories to show!
+				</h2>
+			</div>
+		);
+	}
 
-	// return categories.map((category, index) => (
-	// 	<div key={category} className="col-lg-2 col-md-4">
-	// 		<Link to="#" className="single-cate">
-	// 			<i className={category}></i>
-	// 		</Link>
-	// 	</div>
-	// ));
 	return (
 		<>
 			{categories &&
@@ -44,6 +35,12 @@ const CategoryIcons = () => {
 							to={`/category/${category.id}`}
 							className="single-cate"
 						>
+							{/* <p>{category.name}</p> */}
+							<p>
+								{category.name.length > 12
+									? category.name.substring(0, 12) + "..."
+									: category.name}
+							</p>
 							<img src={category.image} alt="" />
 						</Link>
 					</div>

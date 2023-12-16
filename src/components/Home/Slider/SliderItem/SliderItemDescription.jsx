@@ -25,7 +25,8 @@ const SliderItemDescription = ({ description }) => {
         data-paddingleft="[0,0,0,20]"
         style={{ zIndex: "5", whiteSpace: "normal", textTransform: "none" }}
       >
-        {description}
+        {/* {description} */}
+        {description.length > 130 ? description.substring(0, 130) + '...' : description}
       </div>
     );
   };

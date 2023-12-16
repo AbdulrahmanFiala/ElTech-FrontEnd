@@ -9,15 +9,6 @@ const DiscountCoupon = ({ handleCoupon }) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
-	const handleSubmit = async () => {
-		try {
-			await handleCoupon(formData);
-			showToast('coupon code applied successfully', 'success');
-		} catch (error) {
-			showToast(error.toString())
-		}
-	};
-
 	return (
 		<div className="col-md-6">
 			<div className="coupon">
@@ -38,7 +29,7 @@ const DiscountCoupon = ({ handleCoupon }) => {
 					type="button"
 					className="button"
 					name="apply_coupon"
-					onClick={handleSubmit}
+					onClick={() => handleCoupon(formData)}
 				>
 					Apply coupon
 				</button>

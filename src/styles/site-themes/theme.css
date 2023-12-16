@@ -500,7 +500,8 @@ header.sticky .header-cogs {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 30px;
-  padding: 52px 15px;
+  /* padding: 52px 15px; */
+  padding: 25px 15px;
   text-align: center;
   display: inline-block;
   -webkit-transition: all 0.4s ease;
@@ -753,6 +754,20 @@ header.sticky .header-cogs {
   z-index: 2;
 }
 .pro-badge p {
+  height: 30px;
+  color: #ffffff;
+  line-height: 0.8;
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  padding: 9px 12px;
+  font-size: 14px;
+}
+.pro-badge2 {
+  display: inline-block;
+  width: fit-content;
   height: 30px;
   color: #ffffff;
   line-height: 0.8;
@@ -2940,6 +2955,9 @@ footer.inner-footer {
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
+.goru-pagination li:not(.current) {
+  cursor: pointer;
+}
 .goru-pagination li:hover,
 .goru-pagination li.current {
   color: #000;
@@ -5101,4 +5119,219 @@ body.menu_open {
 
 .backgroundBlue {
   background-color: #007bff;
+}
+
+
+.search-posts {
+margin: 0;
+float: inline-end;}
+
+.search-posts input {
+  width: 60%;
+  height: 45px;
+  background: #f6f7fb;
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 45px;
+  color: #7d7d7d;
+  border: none;
+  outline: none;
+}
+
+.search-posts button {
+  width: 35%;
+  height: 45px;
+  border: none;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 45px;
+  padding: 0 15px;
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
+  background: #000;
+  color: #fff;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  border-radius: 0;
+}
+
+
+/*------------------------------------------------------------------------------------
+/ 16. Dashboard
+/-------------------------------------------------------------------------------------*/
+
+#dashboard-form-wrapper {
+  border: 3px solid #000;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  width: 90%;
+  position: relative;
+  margin: 50px;
+  margin-left: 50px;}
+
+#dashboard-form-wrapper h5 {
+  text-align: center;
+  color: #000;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 0.8;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+#dashboard-form {
+  position: relative;
+}
+#dashboard-form input[type="text"],
+#dashboard-form textarea,
+#dashboard-form input[type="email"],
+#dashboard-form select,
+#dashboard-form input[type="file"]{
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 0 5px;
+  border: none;
+  line-height: 26px;
+  outline: none;
+  background: transparent;
+  margin-bottom: 60px;
+  font-size: 14px;
+  color: #9fa4af;
+  border-bottom: 1px solid #ccc;
+  font-weight: 400;
+  border-radius: 0;
+  letter-spacing: 0;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+#dashboard-form input[type="checkbox"]
+{
+  width: 100px;
+  height: 20px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  line-height: 26px;
+  margin-bottom: 60px;
+  font-size: 14px;
+  color: #9fa4af;
+  border-bottom: 1px solid #ccc;
+  font-weight: 400;
+  border-radius: 0;
+  letter-spacing: 0;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+#dashboard-form label
+ {
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 0 5px;
+  border: none;
+  outline: none;
+  background: transparent;
+  line-height: 26px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+  color: #9fa4af;
+  font-weight: 400;
+  border-radius: 0;
+  letter-spacing: 0;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+#dashboard-form input[type="number"] {
+  display: block;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-bottom: 60px;
+  font-size: 14px;
+  color: #9fa4af;
+  font-weight: 400;
+  border-radius: 0;
+  letter-spacing: 0;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+
+#dashboard-form textarea {
+  resize: none;
+  margin-bottom: 45px;
+}
+#dashboard-form input[type="text"]:focus,
+#dashboard-form textarea:focus,
+#dashboard-form input[type="email"]:focus {
+  border-bottom-color: #000000;
+  color: #000000;
+}
+#dashboard-form input::-moz-placeholder {
+  color: #9fa4af;
+  opacity: 1;
+}
+#dashboard-form input::-ms-input-placeholder {
+  color: #9fa4af;
+  opacity: 1;
+}
+#dashboard-form input::-webkit-input-placeholder {
+  color: #9fa4af;
+  opacity: 1;
+}
+#dashboard-form input[type="submit"] , #dashboard-form button{
+  background: #000;
+  height: 40px;
+  width: 70px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 700;
+  line-height: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.28px;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+#dashboard-form input[type="submit"]:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+#create-btn {
+  background: #000;
+  height: 40px;
+  width: 150px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.28px;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+#create-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
 }

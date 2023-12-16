@@ -1,15 +1,15 @@
 import React from "react";
 
-const CartItem = ({ productName, productPrice }) => {
+const CartItem = ({ product }) => {
   return (
     <tr className="cart-item">
-      <td className="product-name">{productName}</td>
+      <td className="product-name">{product.product.name}</td>
       <td className="product-total">
         <div className="product-price clearfix">
           <span className="price">
             <span>
               <span className="woocommerce-Price-currencySymbol">$</span>
-              {productPrice}
+              {product.total_price}
             </span>
           </span>
         </div>

@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import { createReview } from "../../../api/services/user/product-services";
 import { getUserData } from "../../../api/services/user/user-services";
 
-import c1 from "../../../assets/images/blog/c1.jpg";
+// import c1 from "../../../assets/images/blog/c1.jpg";
+import profilePic from "../../../assets/images/user/profile_pic_placeholder.png";
 import SingleComment from "./SingleComment";
 
-const ReviewsSection = ({ product }) => {
+const ReviewsSection = ({ product, toggleRefresh }) => {
+	const user = useSelector((state) => state.authSlice.user);
 	const isLoggedIn = !!localStorage.getItem("token");
 	const [reviewContent, setReviewContent] = useState("");
 
@@ -20,7 +23,10 @@ const ReviewsSection = ({ product }) => {
 			<div className="comment-area">
 				<h4 className="comment-title">
 					{product.reviews && product.reviews.length} Review(s) to "
-					{product.name}"
+					{product && product.name && product.name.length > 35
+						? product.name.substring(0, 35) + "..."
+						: product.name}
+					"
 				</h4>
 
 				<ol className="comment-list">
@@ -39,7 +45,10 @@ const ReviewsSection = ({ product }) => {
 							return (
 								<SingleComment
 									key={review.id}
-									imgSrc={review.user.profile_picture || c1}
+									imgSrc={
+										review.user.profile_picture ||
+										profilePic
+									}
 									author={`${review.user.first_name} ${review.user.last_name}`}
 									date={formattedDate}
 									commentText={review.content}
@@ -47,7 +56,7 @@ const ReviewsSection = ({ product }) => {
 							);
 						})}
 				</ol>
-				{isLoggedIn && (
+				{isLoggedIn && !user.is_superuser && (
 					<div className="comment-form-wrapper">
 						<h5>Add Review</h5>
 						<form
@@ -59,7 +68,8 @@ const ReviewsSection = ({ product }) => {
 								await createReview(product.id, {
 									content: reviewContent,
 								});
-								window.location.reload();
+								toggleRefresh();
+								// window.location.reload();
 							}}
 						>
 							{/* <div className="col-lg-6 col-md-6">

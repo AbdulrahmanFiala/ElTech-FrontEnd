@@ -1,4 +1,4 @@
-import logo from "../../assets/images/logo-lg.jpg";
+import returnLogo from "../../assets/images/return.png";
 
 const ReturnPolicyLayout = () => {
   return (
@@ -8,53 +8,43 @@ const ReturnPolicyLayout = () => {
           <div className="col-lg-7">
             <h3 className="sec-title">Our Return Policy</h3>
             <p>
-              Sed id interdum urna. Nam ac elit a ante commodo tristique.
-              condimentum vehicula a hendrerit ac nisi. hendrerit ac nisi Lorem
-              ipsum dolor sit amet Vestibulum imperdiet nibh vel magna lacinia
-              ultrices. Sed id interdum urna.
+              At ElTech, we want you to be completely satisfied with your
+              purchase. If you are not satisfied for any reason, we offer a
+              straightforward return policy to ensure a hassle-free experience.
             </p>
             <p>
-              Nullam lacinia faucibus risus, a euismod lorem tincidunt id. Donec
-              maximus placerat tempor. className aptent taciti sociosqu ad
-              litora torquent per conubia nostra, per inceptos himenaeos.
-              Suspendisse faucibus sed dolor eget posuere.Sed id interdum urna.
-              Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum
-              a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet.
+              You may return unused items within 14 days of receiving your
+              order. Here are a few important points to note:
             </p>
 
             <p>
-              Sed id interdum urna. Nam ac elit a ante commodo tristique.
-              condimentum vehicula a hendrerit ac nisi. hendrerit ac nisi Lorem
-              ipsum dolor sit amet Vestibulum imperdiet nibh vel magna lacinia
-              ultrices. Sed id interdum urna.
-            </p>
-            <p>
-              Nullam lacinia faucibus risus, a euismod lorem tincidunt id. Donec
-              maximus placerat tempor. className aptent taciti sociosqu ad
-              litora torquent per conubia nostra, per inceptos himenaeos.
-              Suspendisse faucibus sed dolor eget posuere.Sed id interdum urna.
-              Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum
-              a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet.
+              Items must be in their original condition, unused, and in the
+              original packaging.
             </p>
 
             <p>
-              Sed id interdum urna. Nam ac elit a ante commodo tristique.
-              condimentum vehicula a hendrerit ac nisi. hendrerit ac nisi Lorem
-              ipsum dolor sit amet Vestibulum imperdiet nibh vel magna lacinia
-              ultrices. Sed id interdum urna.
+              Once we receive your returned item and inspect it, we will notify
+              you regarding the approval or rejection of your return. If
+              approved, we will process the refund or exchange accordingly.
             </p>
+
             <p>
-              Nullam lacinia faucibus risus, a euismod lorem tincidunt id. Donec
-              maximus placerat tempor. className aptent taciti sociosqu ad
-              litora torquent per conubia nostra, per inceptos himenaeos.
-              Suspendisse faucibus sed dolor eget posuere.Sed id interdum urna.
-              Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum
-              a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet.
+              If you have any questions about our return policy, feel free to
+              reach out to us at [Your Contact Information].
             </p>
           </div>
           <div className="col-lg-5">
             <div className="history-thumb">
-              <img src={logo} alt="" />
+              <img
+                src={returnLogo}
+                alt=""
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  width: "auto",
+                  height: "auto",
+                }}
+              />
             </div>
           </div>
         </div>

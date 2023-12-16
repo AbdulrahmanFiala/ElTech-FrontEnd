@@ -1,6 +1,6 @@
 import React from "react";
 
-const CountryDropDownMenu = ({ name, value, onChange }) => {
+const CountryDropDownMenu = ({ name, fieldOnChange, fieldValue }) => {
   const countryObjectsArray = [
     { countryCode: "", countryName: "" },
     { countryCode: "AX", countryName: "Åland Islands" },
@@ -254,11 +254,13 @@ const CountryDropDownMenu = ({ name, value, onChange }) => {
       className="country_to_state country_select"
       id="billing_country"
       name={name}
-      onChange={onChange}
-      value={value}
+      onChange={fieldOnChange}
+      value={fieldValue}
     >
       {countryObjectsArray.map((item) => (
-        <option key={item.countryCode} value={item.countryCode}>{item.countryName}</option>
+        <option key={item.countryCode} value={item.countryName}>
+          {item.countryName}
+        </option>
       ))}
     </select>
   );

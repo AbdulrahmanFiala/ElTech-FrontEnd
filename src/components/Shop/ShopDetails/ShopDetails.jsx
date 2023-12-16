@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { getProducts } from "../../../api/services/user/product-services";
-import {fetchUserCart, addCartProduct } from "../../../api/services/user/cart-services";
+import {
+	fetchUserCart,
+	addCartProduct,
+} from "../../../api/services/user/cart-services";
 
-import { cartCount } from "../../../services/actions/cartSlice"
+import { cartCount } from "../../../services/actions/cartSlice";
 
-import { showToast } from '../../../utils/toastUtil';
+import { showToast } from "../../../utils/toastUtil";
 import ShopDetailsCategories from "./ShopDetailsCategories";
 import shopImageHolder370x460 from "../../../assets/images/shop/holder370x460.jpg";
 import NormalProductCard from "../../Shared/NormalProductCard/NormalProductCard";
@@ -20,26 +23,48 @@ const ShopDetails = () => {
 	const [currentPage, setCurrentPage] = useState(0);
 	const [activeItem, setActiveItem] = useState("ALL");
 	const [activeFilter, setActiveFilter] = useState("default");
-	
+	const [refresh, setRefresh] = useState(false);
+
 	const [cart, setCart] = useState([]);
 	const [change, setChange] = useState(0);
 	const dispatch = useDispatch();
 	dispatch(cartCount(cart.length));
+	const user = useSelector((state) => state.authSlice.user);
 
-	const handleAddProductToCart = async (productID, quantity) => {
-		try {
-			await addCartProduct(productID, quantity)
-			showToast('product added to cart successfully', 'success');
-		} catch (error) {
-			showToast(error.toString())
-		}
-		setChange(change + 1);
+	const toggleRefresh = () => {
+		setRefresh(!refresh);
 	};
 
+	const handleAddProductToCart = async (productID, quantity) => {
+		if (user) {
+			try {
+				await addCartProduct(productID, quantity);
+				showToast("product added to cart successfully", "success");
+			} catch (error) {
+				showToast(error.toString());
+			}
+			setChange(change + 1);
+		} else {
+			showToast("You need Login to add product to cart !");
+		}
+	};
+
+	// const handlePageClick = (data) => {
+	// 	let selected = data.selected;
+	// 	setCurrentPage(selected);
+	// 	fetchProducts({ page: selected + 1 });
+	// };
 
 	const handlePageClick = (data) => {
 		let selected = data.selected;
 		setCurrentPage(selected);
+
+		let filter = { page: selected + 1 };
+
+		if (location.state?.searchTerm) {
+			filter.q = location.state.searchTerm;
+		}
+		fetchProducts(filter);
 	};
 
 	const handleFilterChange = async (categoryId, orderFilter) => {
@@ -55,6 +80,11 @@ const ShopDetails = () => {
 			filter.is_popular = "1";
 		}
 
+		if (location.state?.searchTerm) {
+			filter.q = location.state.searchTerm;
+		}
+
+		setCurrentPage(0);
 		fetchProducts(filter);
 	};
 
@@ -63,143 +93,97 @@ const ShopDetails = () => {
 		handleFilterChange(activeItem, selectedValue);
 	};
 
+	// const handleCategoryClick = (categoryId) => {
+	// 	handleFilterChange(categoryId, activeFilter);
+	// 	setActiveItem(categoryId);
+	// };
+
+	// const handleCategoryClick = (categoryId) => {
+	// 	console.log("Here!");
+	// 	setCurrentPage(0);
+	// 	handleFilterChange(categoryId, activeFilter);
+	// 	setActiveItem(categoryId);
+	// 	if (location.state?.searchTerm) {
+	// 		let filter = { q: location.state.searchTerm };
+	// 		if (categoryId !== "ALL") {
+	// 			filter.category = categoryId;
+	// 		}
+	// 		fetchProducts(filter);
+	// 	}
+	// };
+
 	const handleCategoryClick = (categoryId) => {
-		handleFilterChange(categoryId, activeFilter);
+		setCurrentPage(0);
+		if (location.state?.searchTerm) {
+			let filter = { q: location.state.searchTerm };
+			if (categoryId !== "ALL") {
+				filter.category = categoryId;
+			}
+			fetchProducts(filter);
+		} else {
+			handleFilterChange(categoryId, activeFilter);
+		}
 		setActiveItem(categoryId);
 	};
 
+	// const handleCategoryClick = (categoryId) => {
+	// 	setCurrentPage(0);
+	// 	let filter = {};
+	// 	if (location.state?.searchTerm) {
+	// 		filter.q = location.state.searchTerm;
+	// 	}
+	// 	if (categoryId !== "ALL") {
+	// 		filter.category = categoryId;
+	// 	}
+	// 	fetchProducts(filter);
+	// 	setActiveItem(categoryId);
+	// };
+
+	// useEffect(() => {
+	// 	if (user) {
+	// 		fetchUserCart()
+	// 			.then((data) => {
+	// 				setCart(data.products);
+	// 			})
+	// 			.catch((err) => console.log(err));
+	// 	}
+
+	// 	if (
+	// 		location.pathname.includes("/search") &&
+	// 		location.state?.searchTerm
+	// 	) {
+	// 		setCurrentPage(0);
+	// 		fetchProducts({ q: location.state.searchTerm });
+	// 	} else {
+	// 		fetchProducts();
+	// 	}
+	// }, [location, change, refresh]);
+
 	useEffect(() => {
-		fetchUserCart()
-			.then((data) => {
-				setCart(data.products);
-			})
-			.catch((err) => console.log(err));
-			
+		if (user) {
+			fetchUserCart()
+				.then((data) => {
+					setCart(data.products);
+				})
+				.catch((err) => console.log(err));
+		}
+
 		if (
 			location.pathname.includes("/search") &&
-			location.state?.searchTerm
+			location.state?.searchTerm &&
+			activeItem === "ALL"
 		) {
+			setCurrentPage(0);
 			fetchProducts({ q: location.state.searchTerm });
-		} else {
+		} else if (activeItem === "ALL") {
 			fetchProducts();
 		}
-	}, [location, change]);
+	}, [location, change, refresh, activeItem]);
 
 	const fetchProducts = async (filter = {}) => {
 		const fetchedProducts = await getProducts(filter);
 		setProducts(fetchedProducts);
 	};
-
-	// const handleSelectChange = async (event) => {
-	// 	const selectedValue = event.target.value;
-
-	// 	if (selectedValue === "default") {
-	// 		fetchProducts();
-	// 	} else if (selectedValue === "price" || selectedValue === "-price") {
-	// 		fetchProducts({ ordering: selectedValue });
-	// 	} else if (selectedValue === "popular") {
-	// 		fetchProducts({ is_popular: "1" });
-	// 	}
-	// };
-
-	// const products = [
-	// 	{
-	// 		id: 1,
-	// 		image: shopImageHolder370x460,
-	// 		badge: "sale",
-	// 		title: "Gaming Headset",
-	// 		price: "42.00",
-	// 		discountedPrice: "38.00",
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		image: shopImageHolder370x460,
-	// 		badge: "hot",
-	// 		title: "VRBOX Gaming",
-	// 		price: "42.00",
-	// 		discountedPrice: "38.00",
-	// 	},
-	// 	{
-	// 		id: 3,
-	// 		image: shopImageHolder370x460,
-	// 		badge: null,
-	// 		title: "Gaming Mouse",
-	// 		price: "42.00",
-	// 		discountedPrice: "38.00",
-	// 	},
-	// 	{
-	// 		id: 4,
-	// 		image: shopImageHolder370x460,
-	// 		badge: null,
-	// 		title: "Gaming Controller",
-	// 		price: "42.00",
-	// 		discountedPrice: "38.00",
-	// 	},
-	// 	{
-	// 		id: 5,
-	// 		image: shopImageHolder370x460,
-	// 		badge: "sale",
-	// 		title: "Gaming Headset",
-	// 		price: "42.00",
-	// 		discountedPrice: "38.00",
-	// 	},
-	// 	{
-	// 		id: 6,
-	// 		image: shopImageHolder370x460,
-	// 		badge: "hot",
-	// 		title: "Wireless Headset",
-	// 		price: "122.00",
-	// 		discountedPrice: null,
-	// 	},
-	// 	{
-	// 		id: 7,
-	// 		image: shopImageHolder370x460,
-	// 		badge: null,
-	// 		title: "Gaming Controller",
-	// 		price: "42.00",
-	// 		discountedPrice: "38.00",
-	// 	},
-	// 	{
-	// 		id: 8,
-	// 		image: shopImageHolder370x460,
-	// 		badge: "sale",
-	// 		title: "LED TV",
-	// 		price: "42.00",
-	// 		discountedPrice: "38.00",
-	// 	},
-	// 	{
-	// 		id: 9,
-	// 		image: shopImageHolder370x460,
-	// 		badge: "hot",
-	// 		title: "Wirless Headset",
-	// 		price: "122.00",
-	// 		discountedPrice: null,
-	// 	},
-	// 	{
-	// 		id: 10,
-	// 		image: shopImageHolder370x460,
-	// 		badge: null,
-	// 		title: "Black Drone",
-	// 		price: "42.00",
-	// 		discountedPrice: "38.00",
-	// 	},
-	// 	{
-	// 		id: 11,
-	// 		image: shopImageHolder370x460,
-	// 		badge: null,
-	// 		title: "Bluetooth Earphones",
-	// 		price: "42.00",
-	// 		discountedPrice: "38.00",
-	// 	},
-	// 	{
-	// 		id: 12,
-	// 		image: shopImageHolder370x460,
-	// 		badge: "sale",
-	// 		title: "LED TV",
-	// 		price: "42.00",
-	// 		discountedPrice: "38.00",
-	// 	},
-	// ];
 
 	return (
 		<div className="container-fluid">
@@ -211,21 +195,28 @@ const ShopDetails = () => {
 			/>
 
 			<div className="row">
+				{(!products.results || !products.results.length) && (
+					<h1>Sorry, there are no products to show!</h1>
+				)}
 				{products.results &&
 					products.results.map((product) => (
-						<NormalProductCard 
-						key={product.id} 
-						product={product}
-						handleAddProductToCart={handleAddProductToCart}
+						<NormalProductCard
+							key={product.id}
+							product={product}
+							handleAddProductToCart={handleAddProductToCart}
+							toggleRefresh={toggleRefresh}
 						/>
 					))}
 
-				{!products && <h1>No Products matched your search term.</h1>}
+				{/* {!products && <h1>No Products matched your search term.</h1>} */}
 			</div>
-			<ShopPagination
-				pageCount={Math.ceil(products.count / 12)}
-				onPageChange={handlePageClick}
-			/>
+			{products.results && products.results.length !== 0 && (
+				<ShopPagination
+					pageCount={Math.ceil(products.count / 12)}
+					onPageChange={handlePageClick}
+					currentPage={currentPage}
+				/>
+			)}
 		</div>
 	);
 };

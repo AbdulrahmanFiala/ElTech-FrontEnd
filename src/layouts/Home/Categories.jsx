@@ -12,9 +12,8 @@ const CategorySection = () => {
 					<div className="col-lg-12">
 						<h2 className="sec-title">Product Categories</h2>
 						<p className="sec-desc">
-							Sed ut perspiciatis unde omnis iste natus
-							<br />
-							er sit voluptatem accusantium dolore.
+							Explore our wide range of product categories to find
+							exactly what you're looking for.
 						</p>
 					</div>
 				</div>

@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SoicalSectionItem = ({ soicalHref, soicalIcon }) => {
   return (
-    <a href={soicalHref}>
+    <Link href={soicalHref}>
       <i className={soicalIcon}></i>
       <span>&nbsp;</span>
-    </a>
+    </Link>
   );
 };
 

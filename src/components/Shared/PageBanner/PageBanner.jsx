@@ -20,7 +20,12 @@ const PageBanner = ({ section, category, customTitle }) => {
 										{" "}
 										/ {section}
 									</Link>{" "}
-									/ {category.name}
+									/{" "}
+									{category &&
+									category.name &&
+									category.name.length > 20
+										? category.name.substring(0, 20) + "..."
+										: category.name}
 								</>
 							)}
 						</div>

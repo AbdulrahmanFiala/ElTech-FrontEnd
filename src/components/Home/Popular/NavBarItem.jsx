@@ -12,7 +12,10 @@ function NavBarItem({ itemClass, itemName, onItemClick }) {
 					onItemClick();
 				}}
 			>
-				{itemName}
+				{/* {itemName} */}
+				{itemName.length > 15
+					? itemName.substring(0, 15) + "..."
+					: itemName}
 			</a>
 		</li>
 	);

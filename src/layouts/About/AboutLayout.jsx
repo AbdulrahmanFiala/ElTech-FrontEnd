@@ -6,8 +6,6 @@ const AboutLayout = () => {
     <section className="history-section">
       <div className="container">
         <HistoryDetails />
-
-        <HistoryVideo />
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 // Importing the pre-configured API instance
 import { apiInstance } from "../../config/api-config";
 
-// Setting up the endpoint for the API to be the product endpoint in the environment variables
+// Setting up the endpoint for the API to be the cart endpoint in the environment variables
 const cart_endpoint = process.env.REACT_APP_CART_ENDPOINT;
 
 /**
@@ -22,8 +22,8 @@ export const fetchUserCart = async () => {
 		// Handle any error that occurred during fetching user cart products
 		const msg =
 			"There was a problem getting the cart products for the specified user";
-		console.log(error);
-		throw new Error(msg);
+		console.error(msg, error);
+		// throw new Error(msg);
 	}
 };
 
@@ -46,8 +46,8 @@ export const fetchCartProduct = async (productID) => {
 		// Handle any error that occurred during fetching user cart products
 		const msg =
 			"There was a problem getting the cart products for the specified user";
-		console.log(error);
-		throw new Error(msg);
+		console.error(msg, error);
+		// throw new Error(msg);
 	}
 };
 
@@ -63,12 +63,10 @@ export const addCartProduct = async (productID, quantity = 1) => {
 		// construct url
 		const url = cart_endpoint + "/add_product/";
 		// perform POST request to the constructed url
-		const response = await apiInstance.post(url,
-			{
-				quantity: quantity,
-				product: productID
-			}
-		);
+		const response = await apiInstance.post(url, {
+			quantity: quantity,
+			product: productID,
+		});
 
 		// Return response data
 		return response.data;
@@ -76,8 +74,8 @@ export const addCartProduct = async (productID, quantity = 1) => {
 		// Handle any error that occurred during adding the product
 		const msg =
 			"There was a problem adding the product to the cart of the specified user";
-		console.log(error);
-		throw new Error(msg);
+		console.error(msg, error);
+		// throw new Error(msg);
 	}
 };
 
@@ -93,12 +91,10 @@ export const updateCartProduct = async (productID, quantity) => {
 		// construct url
 		const url = cart_endpoint + "/update_product/";
 		// perform PATCH request to the constructed url
-		const response = await apiInstance.patch(url,
-			{
-				quantity: quantity,
-				product: productID
-			}
-		);
+		const response = await apiInstance.patch(url, {
+			quantity: quantity,
+			product: productID,
+		});
 
 		// Return response data
 		return response.data;
@@ -106,8 +102,8 @@ export const updateCartProduct = async (productID, quantity) => {
 		// Handle any error that occurred during updating the product
 		const msg =
 			"There was a problem updating the product to the cart of the specified user";
-		console.log(error);
-		throw new Error(msg);
+		console.error(msg, error);
+		// throw new Error(msg);
 	}
 };
 
@@ -115,7 +111,7 @@ export const updateCartProduct = async (productID, quantity) => {
  * delete product from the cart of a specific user
  * @param {number} productID The ID of the product
  * @return status code 204
- * @throws {Error} If there was a problem updating the product to the cart of the specified user
+ * @throws {Error} If there was a problem deleting the product to the cart of the specified user
  */
 export const deleteCartProduct = async (productID) => {
 	try {
@@ -130,11 +126,10 @@ export const deleteCartProduct = async (productID) => {
 		// Handle any error that occurred during deleting product to cart
 		const msg =
 			"There was a problem deleting the product to the cart of the specified user";
-		console.log(error);
-		throw new Error(msg);
+		console.error(msg, error);
+		// throw new Error(msg);
 	}
 };
-
 
 /**
  * add coupon to the cart of a specific user
@@ -155,7 +150,7 @@ export const addCoupon = async (code) => {
 		// Handle any error that occurred during adding the coupon to cart
 		const msg =
 			"There was a problem adding the coupon to the cart of the specified user";
-		console.log(error);
+		console.error(msg, error);
 		throw new Error(msg);
 	}
 };

@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import { getUserData } from "../../../api/services/user/user-services";
 import { addProductRating } from "../../../api/services/user/product-services";
+
+import { showToast } from "../../../utils/toastUtil";
 
 import Rating from "react-rating";
 
@@ -10,15 +13,25 @@ const ProductRatingReviews = ({
 	averageRating,
 	ratings,
 	productId,
+	toggleRefresh,
 }) => {
+	const user = useSelector((state) => state.authSlice.user);
 	const [userId, setUserId] = useState(null);
 
 	const handleRatingChange = async (newRating) => {
 		try {
 			await addProductRating(productId, newRating);
 			console.log("Rating submitted successfully");
+			// showToast("Rating added successfully!", "success");
+			// window.location.reload();
+			showToast("Rating added successfully!", "success");
+			toggleRefresh();
+			// setTimeout(() => {
+			// 	window.location.reload();
+			// }, 1000);
 		} catch (error) {
 			console.error("Failed to submit rating", error);
+			showToast("There was a problem adding the rating!", "error");
 		}
 	};
 
@@ -26,7 +39,6 @@ const ProductRatingReviews = ({
 		const fetchUserData = async () => {
 			const userData = await getUserData();
 			setUserId(userData.id);
-			// localStorage.setItem("userId", userData.id);
 		};
 
 		// const storedUserId = localStorage.getItem("userId");
@@ -58,9 +70,9 @@ const ProductRatingReviews = ({
 				<Rating
 					fullSymbol="twi-star full-star"
 					emptySymbol="twi-star empty-star"
-					fractions={2}
+					fractions={1}
 					initialRating={averageRating}
-					readonly={!userId || hasRated}
+					readonly={!userId || hasRated || user.is_superuser}
 					className="woocommerce-product-rating"
 					onChange={handleRatingChange}
 				/>

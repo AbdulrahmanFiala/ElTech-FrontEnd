@@ -21,10 +21,10 @@ const PopUpSearch = () => {
 	};
 
 	useEffect(() => {
-		window.$(".search-toggles").on("click", function (e) {
-			e.preventDefault();
-			window.$(".popup-search-sec").toggleClass("active");
-		});
+		// window.$(".search-toggles").on("click", function (e) {
+		// 	e.preventDefault();
+		// 	window.$(".popup-search-sec").toggleClass("active");
+		// });
 		window.$(".search-closer").on("click", function () {
 			window.$(".popup-search-sec").removeClass("active");
 		});
